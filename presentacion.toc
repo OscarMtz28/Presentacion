@@ -1,6 +1,6 @@
 \babel@toc {spanish}{}\relax 
-\beamer@sectionintoc {1}{Introducción}{2}{0}{1}
-\beamer@sectionintoc {2}{Arquitecturas de Bases de Datos}{3}{0}{2}
-\beamer@sectionintoc {3}{Tipos de Usuarios}{5}{0}{3}
-\beamer@sectionintoc {4}{Rol del Administrador (DBA)}{6}{0}{4}
-\beamer@sectionintoc {5}{Conclusión}{8}{0}{5}
+\beamer@sectionintoc {1}{1. Visión General de Arquitectura}{2}{0}{1}
+\beamer@sectionintoc {2}{2. Tipos de Arquitecturas}{3}{0}{2}
+\beamer@sectionintoc {3}{3. Usuarios de Bases de Datos}{5}{0}{3}
+\beamer@sectionintoc {4}{4. Administrador de Bases de Datos (DBA)}{6}{0}{4}
+\beamer@sectionintoc {5}{5. Conclusión}{8}{0}{5}

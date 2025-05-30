@@ -1,111 +1,303 @@
 \documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{seahorse}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,arrows}
 
 \title{Arquitectura de Sistemas de Bases de Datos}
-\subtitle{Componentes, Usuarios y Administración}
-\author{Jose Alberto González }
-\date{\today}
-\institute{Universidad o Empresa}
-
-\usetheme{Madrid} % Tema opcional (Berlin, Dresden, etc.)
+\subtitle{Capítulos 1.7 - 1.8: Usuarios y Administración}
+\author{}
+\date{}
 
 \begin{document}
 
 \begin{frame}
-  \titlepage
+\titlepage
 \end{frame}
 
-% --- INTRODUCCIÓN ---
-\section{Introducción}
-\begin{frame}{¿Qué cubriremos?}
-  \begin{itemize}
-    \item Arquitecturas de bases de datos (centralizada, paralela, distribuida).
-    \item Tipos de usuarios y sus interacciones.
-    \item Funciones clave del Administrador (DBA).
-  \end{itemize}
+\section{1. Visión General de Arquitectura}
+\begin{frame}{Arquitectura Unificada de Bases de Datos}
+\begin{block}{Componentes interconectados}
+Sistema que permite interacción de diferentes usuarios con los datos
+\end{block}
+
+\begin{columns}[T]
+\column{0.5\textwidth}
+\textbf{Elementos clave:}
+\begin{itemize}
+    \item Gestión de transacciones
+    \item Control de concurrencia
+    \item Mecanismos de recuperación
+    \item Interfaces de usuario
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Objetivos:}
+\begin{itemize}
+    \item Consistencia de datos
+    \item Seguridad
+    \item Escalabilidad
+    \item Alto rendimiento
+\end{itemize}
+\end{columns}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.3cm]
+\node (db) [draw, rectangle, fill=blue!20] {Base de Datos};
+\node (app) [draw, rectangle, fill=green!20, above left of=db] {Aplicaciones};
+\node (users) [draw, ellipse, fill=yellow!20, above of=app] {Usuarios};
+\node (dba) [draw, rectangle, fill=red!20, above right of=db] {DBA};
+
+\draw [->] (users) -- (app);
+\draw [->] (app) -- (db);
+\draw [->] (dba) -- (db);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
-% --- ARQUITECTURAS ---
-\section{Arquitecturas de Bases de Datos}
-\begin{frame}{Arquitectura Centralizada}
-  \begin{block}{Figura 1.3: Modelo Cliente-Servidor}
+\section{2. Tipos de Arquitecturas}
+\begin{frame}{Modelos de Implementación}
+\begin{columns}[T]
+\column{0.33\textwidth}
+\textbf{Centralizada}
+\begin{itemize}
+    \item Unico servidor/múltiples CPUs
+    \item Memoria compartida
+    \item \alert{Limitaciones:}
     \begin{itemize}
-      \item Ejecución en un servidor con memoria compartida.
-      \item Múltiples CPUs acceden a la misma memoria.
-      \item Usado en sistemas tradicionales.
+        \item Cuellos de botella
+        \item Escalabilidad reducida
     \end{itemize}
-    \end{block}
-  \centering
-  %\includegraphics[width=0.5\textwidth]{esquema_centralizado.png} % Reemplaza con tu imagen
-\end{frame}
+    \item \textbf{Ejemplo:} Banco pequeño
+\end{itemize}
 
-\begin{frame}{Arquitecturas Avanzadas}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \textbf{Bases de Datos Paralelas}
-      \begin{itemize}
-        \item Cluster de máquinas.
-        \item Alto volumen de datos.
-      \end{itemize}
-    \column{0.5\textwidth}
-      \textbf{Bases de Datos Distribuidas}
-      \begin{itemize}
-        \item Datos en ubicaciones geográficas distintas.
-        \item Ejemplo: Sistemas globales.
-      \end{itemize}
-  \end{columns}
-\end{frame}
-
-% --- USUARIOS ---
-\section{Tipos de Usuarios}
-\begin{frame}{4 Tipos de Usuarios}
-  \begin{enumerate}
-    \item \textbf{Ingenuos (Naïve)}: Interfaz predefinida (formularios web/móviles).
-    \item \textbf{Programadores}: Desarrollan aplicaciones con herramientas.
-    \item \textbf{Avanzados (Sophisticated)}: Consultas directas (SQL, análisis de datos).
-    \item \textbf{Administradores (DBA)}: Control centralizado.
-  \end{enumerate}
-\end{frame}
-
-% --- DBA ---
-\section{Rol del Administrador (DBA)}
-\begin{frame}{Funciones del DBA}
-  \begin{itemize}
-    \item Definición y modificación de esquemas.
-    \item Optimización de almacenamiento (índices, particiones).
-    \item \textcolor{blue}{Gestión de permisos} (seguridad por autorizaciones).
-    \item Mantenimiento: Backups, espacio en disco, monitoreo.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Importancia del DBA}
-  \begin{alertblock}{¿Por qué es crítico?}
-    Garantiza:
+\column{0.33\textwidth}
+\textbf{Paralela}
+\begin{itemize}
+    \item Múltiples máquinas (mismo DC)
+    \item Procesamiento masivo
+    \item \textbf{Ventajas:}
     \begin{itemize}
-      \item \textbf{Disponibilidad}: Copias de seguridad y recuperación.
-      \item \textbf{Rendimiento}: Ajuste de consultas y recursos.
-      \item \textbf{Seguridad}: Control de accesos no autorizados.
+        \item Alta velocidad
+        \item Cálculos intensivos
     \end{itemize}
-  \end{alertblock}
+    \item \textbf{Uso:} Big Data, IA
+\end{itemize}
+
+\column{0.33\textwidth}
+\textbf{Distribuida}
+\begin{itemize}
+    \item Servidores geográficamente dispersos
+    \item \textbf{Ventajas:}
+    \begin{itemize}
+        \item Baja latencia
+        \item Tolerancia a fallos
+    \end{itemize}
+    \item \textbf{Uso:} eCommerce global
+\end{itemize}
+\end{columns}
 \end{frame}
 
-% --- CONCLUSIÓN ---
-\section{Conclusión}
-\begin{frame}{Resumen}
-  \begin{itemize}
-    \item Arquitecturas evolucionan para escalar (centralizada $\rightarrow$ distribuida).
-    \item Usuarios tienen necesidades técnicas distintas.
-    \item El DBA es el "guardián" de los datos.
-  \end{itemize}
+\begin{frame}{Evolución de Arquitecturas de Aplicaciones}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\textbf{2 Niveles (Cliente-Servidor)}
+\begin{itemize}
+    \item Cliente $\leftrightarrow$ Servidor DB
+    \item \alert{Problemas:}
+    \begin{itemize}
+        \item Sobrecarga servidor
+        \item Vulnerabilidades seguridad
+        \item Escalabilidad limitada
+    \end{itemize}
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\node (client) [draw] {Cliente};
+\node (server) [draw, right=.6cm of client] {Servidor DB};
+\draw [<->] (client) -- (server);
+\end{tikzpicture}
+\end{center}
+
+\column{0.5\textwidth}
+\textbf{3 Niveles (Moderno)}
+\begin{itemize}
+    \item Cliente $\rightarrow$ Servidor Apps $\rightarrow$ DB
+    \item \textbf{Ventajas:}
+    \begin{itemize}
+        \item Mayor seguridad
+        \item Mejor rendimiento
+        \item Escalabilidad mejorada
+    \end{itemize}
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+\node (client) [draw] {Cliente};
+\node (app) [draw, right=.4cm of client] {Servidor Apps};
+\node (db) [draw, below=.35cm of app] {Servidor DB};
+\draw [->] (client) -- (app);
+\draw [->] (app) -- (db);
+\end{tikzpicture}
+\end{center}
+\end{columns}
+
+\textbf{Ejemplo e-commerce:}
+\begin{itemize}
+    \item Usuario (navegador) $\rightarrow$ Servidor aplicaciones $\rightarrow$ Base de datos
+\end{itemize}
 \end{frame}
 
-\begin{frame}{¿Preguntas?}
-  \centering
-  \Large ¡Gracias por su atención! \\
-  \small Contacto: \href{mailto:tu@email.com}{tu@email.com}
+\section{3. Usuarios de Bases de Datos}
+\begin{frame}{Tipos de Usuarios}
+\begin{columns}[T]
+\column{0.25\textwidth}
+\textbf{Ingenuos}
+\begin{itemize}
+    \item Sin conocimiento técnico
+    \item Interfaces predefinidas
+    \item \textbf{Ejemplo:} 
+    Estudiante que se inscribe vía web
+\end{itemize}
+
+\column{0.25\textwidth}
+\textbf{Programadores}
+\begin{itemize}
+    \item Desarrollan aplicaciones
+    \item Crean interfaces
+    \item \textbf{Ejemplo:} 
+    App e-commerce
+\end{itemize}
+
+\column{0.25\textwidth}
+\textbf{Sofisticados}
+\begin{itemize}
+    \item Consultas directas (SQL)
+    \item Herramientas analíticas
+    \item \textbf{Ejemplo:} 
+    Analista de negocios
+\end{itemize}
+
+\column{0.25\textwidth}
+\textbf{Administradores (DBA)}
+\begin{itemize}
+    \item Gestión centralizada
+    \item Seguridad y eficiencia
+    \item \textbf{Rol:} 
+    Mantenimiento global
+\end{itemize}
+\end{columns}
+
+\begin{block}{Interacción jerárquica}
+Cada tipo de usuario opera en diferentes niveles de abstracción
+\end{block}
+\end{frame}
+
+\section{4. Administrador de Bases de Datos (DBA)}
+\begin{frame}{Funciones Clave del DBA}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\textbf{Gestión de Esquemas}
+\begin{itemize}
+    \item Definición inicial (DDL)
+    \item Modificación y evolución
+    \item Optimización estructura
+\end{itemize}
+
+\textbf{Seguridad y Acceso}
+\begin{itemize}
+    \item Control de autorizaciones
+    \item Gestión de permisos
+    \item Políticas de seguridad
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Almacenamiento Físico}
+\begin{itemize}
+    \item Selección tecnología (SSD/HDD)
+    \item Diseño de índices
+    \item Organización datos
+\end{itemize}
+
+\textbf{Mantenimiento}
+\begin{itemize}
+    \item \alert{Respaldos periódicos}
+    \item Gestión de espacio
+    \item Monitoreo rendimiento
+\end{itemize}
+\end{columns}
+
+\begin{exampleblock}{Ejemplo práctico}
+Optimizar organización física cuando aumentan volúmenes de datos
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Responsabilidades Operativas del DBA}
+\begin{table}
+\centering
+\begin{tabular}{p{5cm}p{5cm}}
+\toprule
+\textbf{Función} & \textbf{Acciones Concretas} \\
+\midrule
+Definición del esquema & Crear tablas, relaciones y restricciones con DDL \\
+\hline
+Optimización física & Seleccionar almacenamiento (SSD para velocidad, HDD para costo) \\
+\hline
+Control de acceso & Asignar permisos (ej: finanzas puede ver ventas pero no modificar clientes) \\
+\hline
+Mantenimiento preventivo & \begin{tabular}{@{}l@{}}• Respaldos remotos\\• Monitoreo consultas\\• Limpieza espacio\end{tabular} \\
+\hline
+Solución de problemas & Optimizar consultas costosas y prevenir bloqueos \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\section{5. Conclusión}
+\begin{frame}{Síntesis Final}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\textbf{Arquitecturas}
+\begin{itemize}
+    \item Centralizada $\rightarrow$ Paralela $\rightarrow$ Distribuida
+    \item 2 niveles $\rightarrow$ 3 niveles
+    \item Transacciones: Atomicidad + Durabilidad
+\end{itemize}
+
+\textbf{Usuarios}
+\begin{itemize}
+    \item 4 perfiles con distintos niveles de acceso
+    \item Interacción jerárquica
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{DBA}
+\begin{itemize}
+    \item Rol crítico en gestión
+    \item Responsable de:
+    \begin{itemize}
+        \item Seguridad
+        \item Rendimiento
+        \item Disponibilidad
+    \end{itemize}
+    \item Funciones técnicas y operativas
+\end{itemize}
+\end{columns}
+
+\vspace{5mm}
+\begin{block}{Visión integral}
+La arquitectura, usuarios y administración forman un ecosistema interdependiente
+\end{block}
+
+\footnotesize\textbf{Fuente:} Fundamentos De Bases De Datos (5a. Ed.) - Silberschatz
 \end{frame}
 
 \end{document}
