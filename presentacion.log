@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.28)  29 MAY 2025 20:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.28)  29 MAY 2025 20:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -717,20 +717,59 @@ Dictionary: translator-theorem-dictionary, Language: English
 LaTeX Info: Redefining \. on input line 15.
 LaTeX Info: Redefining \% on input line 15.
  (presentacion.nav)
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 15--15
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 19--19
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [1
 
 {C:/Users/marti/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 29--29
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [2
 
 ]
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 43--43
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [3
 
 ]
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 60--60
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
 LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
- (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
+(C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
@@ -742,25 +781,80 @@ LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inpu
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
 
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
 [4
 
 ]
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 71--71
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [5
 
 ]
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 82--82
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [6
 
 ]
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 93--93
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [7
 
 ]
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 103--103
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [8
 
 ]
+Overfull \hbox (8.37372pt too wide) in paragraph at lines 109--109
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+
+
+
+Overfull \hbox (8.37372pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [9
 
@@ -788,13 +882,13 @@ Package rerunfilecheck Info: File `presentacion.out' has not changed.
 Here is how much of TeX's memory you used:
  23325 strings out of 469923
  447336 string characters out of 5479237
- 816572 words of memory out of 5000000
+ 816653 words of memory out of 5000000
  49654 multiletter control sequences out of 15000+600000
  634481 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,123p,459b,699s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,16n,123p,459b,699s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentacion.pdf (9 pages, 135500 bytes).
+Output written on presentacion.pdf (9 pages, 136096 bytes).
 PDF statistics:
  359 PDF objects out of 1000 (max. 8388607)
  24 named destinations out of 1000 (max. 500000)
