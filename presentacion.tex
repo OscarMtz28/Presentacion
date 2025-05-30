@@ -1,0 +1,111 @@
+\documentclass{beamer}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{Arquitectura de Sistemas de Bases de Datos}
+\subtitle{Componentes, Usuarios y Administración}
+\author{Jose Alberto González }
+\date{\today}
+\institute{Universidad o Empresa}
+
+\usetheme{Madrid} % Tema opcional (Berlin, Dresden, etc.)
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% --- INTRODUCCIÓN ---
+\section{Introducción}
+\begin{frame}{¿Qué cubriremos?}
+  \begin{itemize}
+    \item Arquitecturas de bases de datos (centralizada, paralela, distribuida).
+    \item Tipos de usuarios y sus interacciones.
+    \item Funciones clave del Administrador (DBA).
+  \end{itemize}
+\end{frame}
+
+% --- ARQUITECTURAS ---
+\section{Arquitecturas de Bases de Datos}
+\begin{frame}{Arquitectura Centralizada}
+  \begin{block}{Figura 1.3: Modelo Cliente-Servidor}
+    \begin{itemize}
+      \item Ejecución en un servidor con memoria compartida.
+      \item Múltiples CPUs acceden a la misma memoria.
+      \item Usado en sistemas tradicionales.
+    \end{itemize}
+    \end{block}
+  \centering
+  %\includegraphics[width=0.5\textwidth]{esquema_centralizado.png} % Reemplaza con tu imagen
+\end{frame}
+
+\begin{frame}{Arquitecturas Avanzadas}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \textbf{Bases de Datos Paralelas}
+      \begin{itemize}
+        \item Cluster de máquinas.
+        \item Alto volumen de datos.
+      \end{itemize}
+    \column{0.5\textwidth}
+      \textbf{Bases de Datos Distribuidas}
+      \begin{itemize}
+        \item Datos en ubicaciones geográficas distintas.
+        \item Ejemplo: Sistemas globales.
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+% --- USUARIOS ---
+\section{Tipos de Usuarios}
+\begin{frame}{4 Tipos de Usuarios}
+  \begin{enumerate}
+    \item \textbf{Ingenuos (Naïve)}: Interfaz predefinida (formularios web/móviles).
+    \item \textbf{Programadores}: Desarrollan aplicaciones con herramientas.
+    \item \textbf{Avanzados (Sophisticated)}: Consultas directas (SQL, análisis de datos).
+    \item \textbf{Administradores (DBA)}: Control centralizado.
+  \end{enumerate}
+\end{frame}
+
+% --- DBA ---
+\section{Rol del Administrador (DBA)}
+\begin{frame}{Funciones del DBA}
+  \begin{itemize}
+    \item Definición y modificación de esquemas.
+    \item Optimización de almacenamiento (índices, particiones).
+    \item \textcolor{blue}{Gestión de permisos} (seguridad por autorizaciones).
+    \item Mantenimiento: Backups, espacio en disco, monitoreo.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Importancia del DBA}
+  \begin{alertblock}{¿Por qué es crítico?}
+    Garantiza:
+    \begin{itemize}
+      \item \textbf{Disponibilidad}: Copias de seguridad y recuperación.
+      \item \textbf{Rendimiento}: Ajuste de consultas y recursos.
+      \item \textbf{Seguridad}: Control de accesos no autorizados.
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+% --- CONCLUSIÓN ---
+\section{Conclusión}
+\begin{frame}{Resumen}
+  \begin{itemize}
+    \item Arquitecturas evolucionan para escalar (centralizada $\rightarrow$ distribuida).
+    \item Usuarios tienen necesidades técnicas distintas.
+    \item El DBA es el "guardián" de los datos.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{¿Preguntas?}
+  \centering
+  \Large ¡Gracias por su atención! \\
+  \small Contacto: \href{mailto:tu@email.com}{tu@email.com}
+\end{frame}
+
+\end{document}
